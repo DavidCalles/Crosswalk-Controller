@@ -1,0 +1,6 @@
+
+State Machine - |Crosswalk_Controller|FSM_CWC:FSM_CWC0|State
+Name State.RED State.YELLOW State.GREEN 
+State.GREEN 0 0 0 
+State.YELLOW 0 1 1 
+State.RED 1 0 1 
