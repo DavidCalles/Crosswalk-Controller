@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Crosswalk_Controller
-Mon Aug 09 22:23:09 2021
+Thu Aug 12 19:09:21 2021
 Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
 
 
@@ -13,12 +13,12 @@ Quartus Prime Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |Crosswalk_Controller|FSM_CWC:FSM_CWC0|State
-  9. Registers Removed During Synthesis
- 10. General Register Statistics
- 11. Inverted Register Statistics
- 12. Multiplexer Restructuring Statistics (Restructuring Performed)
- 13. Port Connectivity Checks: "FSM_CWC:FSM_CWC0"
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Inverted Register Statistics
+ 11. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 12. Port Connectivity Checks: "FSM_CWC:FSM_CWC2"
+ 13. Port Connectivity Checks: "FSM_CWC:FSM_CWC1"
  14. Port Connectivity Checks: "Counter32Bits:Counter32Bits0"
  15. Post-Synthesis Netlist Statistics for Top Partition
  16. Elapsed Time Per Partition
@@ -49,14 +49,14 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Aug 09 22:23:09 2021       ;
+; Analysis & Synthesis Status     ; Successful - Thu Aug 12 19:09:21 2021       ;
 ; Quartus Prime Version           ; 20.1.1 Build 720 11/11/2020 SJ Lite Edition ;
 ; Revision Name                   ; Crosswalk_Controller                        ;
 ; Top-level Entity Name           ; Crosswalk_Controller                        ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 75                                          ;
-; Total pins                      ; 77                                          ;
+; Total registers                 ; 117                                         ;
+; Total pins                      ; 120                                         ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0                                           ;
 ; Total DSP Blocks                ; 0                                           ;
@@ -182,6 +182,8 @@ https://fpgasoftware.intel.com/eula.
 ; Crosswalk_Controller.vhd         ; yes             ; User VHDL File  ; C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Crosswalk_Controller.vhd ;         ;
 ; Counter32Bits.vhd                ; yes             ; User VHDL File  ; C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Counter32Bits.vhd        ;         ;
 ; FSM_CWC.vhd                      ; yes             ; User VHDL File  ; C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/FSM_CWC.vhd              ;         ;
+; Counter32BitsReverse.vhd         ; yes             ; User VHDL File  ; C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Counter32BitsReverse.vhd ;         ;
+; State_Package.vhd                ; yes             ; User VHDL File  ; C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/State_Package.vhd        ;         ;
 +----------------------------------+-----------------+-----------------+---------------------------------------------------------------------------------------------------------------+---------+
 
 
@@ -190,66 +192,60 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+-----------+
 ; Resource                                    ; Usage     ;
 +---------------------------------------------+-----------+
-; Estimate of Logic utilization (ALMs needed) ; 55        ;
+; Estimate of Logic utilization (ALMs needed) ; 89        ;
 ;                                             ;           ;
-; Combinational ALUT usage for logic          ; 95        ;
+; Combinational ALUT usage for logic          ; 154       ;
 ;     -- 7 input functions                    ; 0         ;
-;     -- 6 input functions                    ; 13        ;
-;     -- 5 input functions                    ; 10        ;
-;     -- 4 input functions                    ; 1         ;
-;     -- <=3 input functions                  ; 71        ;
+;     -- 6 input functions                    ; 22        ;
+;     -- 5 input functions                    ; 16        ;
+;     -- 4 input functions                    ; 2         ;
+;     -- <=3 input functions                  ; 114       ;
 ;                                             ;           ;
-; Dedicated logic registers                   ; 75        ;
+; Dedicated logic registers                   ; 117       ;
 ;                                             ;           ;
-; I/O pins                                    ; 77        ;
+; I/O pins                                    ; 120       ;
 ;                                             ;           ;
 ; Total DSP Blocks                            ; 0         ;
 ;                                             ;           ;
 ; Maximum fan-out node                        ; clk~input ;
-; Maximum fan-out                             ; 75        ;
-; Total fan-out                               ; 647       ;
-; Average fan-out                             ; 2.00      ;
+; Maximum fan-out                             ; 117       ;
+; Total fan-out                               ; 1089      ;
+; Average fan-out                             ; 2.13      ;
 +---------------------------------------------+-----------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                   ;
-+-----------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------+----------------------+--------------+
-; Compilation Hierarchy Node        ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                ; Entity Name          ; Library Name ;
-+-----------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------+----------------------+--------------+
-; |Crosswalk_Controller             ; 95 (0)              ; 75 (0)                    ; 0                 ; 0          ; 77   ; 0            ; |Crosswalk_Controller                              ; Crosswalk_Controller ; work         ;
-;    |Counter32Bits:Counter32Bits0| ; 40 (40)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |Crosswalk_Controller|Counter32Bits:Counter32Bits0 ; Counter32Bits        ; work         ;
-;    |Counter32Bits:Counter32Bits1| ; 41 (41)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |Crosswalk_Controller|Counter32Bits:Counter32Bits1 ; Counter32Bits        ; work         ;
-;    |FSM_CWC:FSM_CWC0|             ; 7 (7)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |Crosswalk_Controller|FSM_CWC:FSM_CWC0             ; FSM_CWC              ; work         ;
-;    |SevenSegments:SevenSegments0| ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Crosswalk_Controller|SevenSegments:SevenSegments0 ; SevenSegments        ; work         ;
-+-----------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+----------------------------------------------------+----------------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                 ;
++------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------+----------------------+--------------+
+; Compilation Hierarchy Node               ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                       ; Entity Name          ; Library Name ;
++------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------+----------------------+--------------+
+; |Crosswalk_Controller                    ; 154 (0)             ; 117 (0)                   ; 0                 ; 0          ; 120  ; 0            ; |Crosswalk_Controller                                     ; Crosswalk_Controller ; work         ;
+;    |Counter32Bits:Counter32Bits0|        ; 40 (40)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |Crosswalk_Controller|Counter32Bits:Counter32Bits0        ; Counter32Bits        ; work         ;
+;    |Counter32BitsReverse:Counter32Bits1| ; 43 (43)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |Crosswalk_Controller|Counter32BitsReverse:Counter32Bits1 ; Counter32BitsReverse ; work         ;
+;    |Counter32BitsReverse:Counter32Bits2| ; 43 (43)             ; 33 (33)                   ; 0                 ; 0          ; 0    ; 0            ; |Crosswalk_Controller|Counter32BitsReverse:Counter32Bits2 ; Counter32BitsReverse ; work         ;
+;    |FSM_CWC:FSM_CWC1|                    ; 7 (7)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |Crosswalk_Controller|FSM_CWC:FSM_CWC1                    ; FSM_CWC              ; work         ;
+;    |FSM_CWC:FSM_CWC2|                    ; 7 (7)               ; 9 (9)                     ; 0                 ; 0          ; 0    ; 0            ; |Crosswalk_Controller|FSM_CWC:FSM_CWC2                    ; FSM_CWC              ; work         ;
+;    |SevenSegments:SevenSegments0|        ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Crosswalk_Controller|SevenSegments:SevenSegments0        ; SevenSegments        ; work         ;
+;    |SevenSegments:SevenSegments1|        ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Crosswalk_Controller|SevenSegments:SevenSegments1        ; SevenSegments        ; work         ;
++------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------+----------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-Encoding Type:  One-Hot
-+--------------------------------------------------------------+
-; State Machine - |Crosswalk_Controller|FSM_CWC:FSM_CWC0|State ;
-+--------------+-----------+--------------+--------------------+
-; Name         ; State.RED ; State.YELLOW ; State.GREEN        ;
-+--------------+-----------+--------------+--------------------+
-; State.GREEN  ; 0         ; 0            ; 0                  ;
-; State.YELLOW ; 0         ; 1            ; 1                  ;
-; State.RED    ; 1         ; 0            ; 1                  ;
-+--------------+-----------+--------------+--------------------+
-
-
-+------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                             ;
-+----------------------------------------------+-------------------------------------------------+
-; Register name                                ; Reason for Removal                              ;
-+----------------------------------------------+-------------------------------------------------+
-; FSM_CWC:FSM_CWC0|timerValSignal[3..9,11..31] ; Merged with FSM_CWC:FSM_CWC0|timerValSignal[10] ;
-; FSM_CWC:FSM_CWC0|timerValSignal[10]          ; Stuck at GND due to stuck port data_in          ;
-; FSM_CWC:FSM_CWC0|timerValSignal[0]           ; Stuck at VCC due to stuck port data_in          ;
-; FSM_CWC:FSM_CWC0|timerValSignal[1]           ; Merged with FSM_CWC:FSM_CWC0|State.RED          ;
-; FSM_CWC:FSM_CWC0|timerValSignal[2]           ; Merged with FSM_CWC:FSM_CWC0|State.YELLOW       ;
-; Total Number of Removed Registers = 32       ;                                                 ;
-+----------------------------------------------+-------------------------------------------------+
++-----------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                      ;
++----------------------------------------+------------------------------------------------+
+; Register name                          ; Reason for Removal                             ;
++----------------------------------------+------------------------------------------------+
+; FSM_CWC:FSM_CWC1|timerValSignal[3..31] ; Merged with FSM_CWC:FSM_CWC1|timerValSignal[0] ;
+; FSM_CWC:FSM_CWC2|timerValSignal[3..31] ; Merged with FSM_CWC:FSM_CWC2|timerValSignal[0] ;
+; FSM_CWC:FSM_CWC1|timerValSignal[0]     ; Stuck at GND due to stuck port data_in         ;
+; FSM_CWC:FSM_CWC2|timerValSignal[0]     ; Stuck at GND due to stuck port data_in         ;
+; FSM_CWC:FSM_CWC1|timerValSignal[2]     ; Merged with FSM_CWC:FSM_CWC1|State.YELLOWS     ;
+; FSM_CWC:FSM_CWC1|timerValSignal[1]     ; Merged with FSM_CWC:FSM_CWC1|State.GREENS      ;
+; FSM_CWC:FSM_CWC2|timerValSignal[2]     ; Merged with FSM_CWC:FSM_CWC2|State.YELLOWS     ;
+; FSM_CWC:FSM_CWC2|timerValSignal[1]     ; Merged with FSM_CWC:FSM_CWC2|State.GREENS      ;
+; Total Number of Removed Registers = 64 ;                                                ;
++----------------------------------------+------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -257,12 +253,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 75    ;
-; Number of registers using Synchronous Clear  ; 64    ;
+; Total registers                              ; 117   ;
+; Number of registers using Synchronous Clear  ; 92    ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 8     ;
+; Number of registers using Asynchronous Clear ; 16    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 6     ;
+; Number of registers using Clock Enable       ; 74    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -272,34 +268,64 @@ Encoding Type:  One-Hot
 +----------------------------------------+---------+
 ; Inverted Register                      ; Fan out ;
 +----------------------------------------+---------+
-; FSM_CWC:FSM_CWC0|greenSignal           ; 1       ;
-; Total number of inverted registers = 1 ;         ;
+; FSM_CWC:FSM_CWC1|greenSignal           ; 1       ;
+; FSM_CWC:FSM_CWC2|redSignal             ; 1       ;
+; FSM_CWC:FSM_CWC1|State.GREENS          ; 4       ;
+; FSM_CWC:FSM_CWC2|State.REDS            ; 4       ;
+; Total number of inverted registers = 4 ;         ;
 +----------------------------------------+---------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                  ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                        ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------+
-; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |Crosswalk_Controller|Counter32Bits:Counter32Bits0|countSignal[0] ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |Crosswalk_Controller|Counter32Bits:Counter32Bits1|countSignal[3] ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+-------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                         ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
+; 3:1                ; 30 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |Crosswalk_Controller|Counter32BitsReverse:Counter32Bits1|countSignal[0] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Crosswalk_Controller|Counter32BitsReverse:Counter32Bits1|countSignal[2] ;
+; 3:1                ; 30 bits   ; 60 LEs        ; 0 LEs                ; 60 LEs                 ; Yes        ; |Crosswalk_Controller|Counter32BitsReverse:Counter32Bits2|countSignal[6] ;
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |Crosswalk_Controller|Counter32BitsReverse:Counter32Bits2|countSignal[2] ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 0 LEs                ; 64 LEs                 ; Yes        ; |Crosswalk_Controller|Counter32Bits:Counter32Bits0|countSignal[2]        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------+
 
 
 +--------------------------------------------------+
-; Port Connectivity Checks: "FSM_CWC:FSM_CWC0"     ;
+; Port Connectivity Checks: "FSM_CWC:FSM_CWC2"     ;
 +----------------+-------+----------+--------------+
 ; Port           ; Type  ; Severity ; Details      ;
 +----------------+-------+----------+--------------+
-; greent[2..0]   ; Input ; Info     ; Stuck at VCC ;
+; statei.GREENS  ; Input ; Info     ; Stuck at GND ;
+; statei.YELLOWS ; Input ; Info     ; Stuck at GND ;
+; statei.REDS    ; Input ; Info     ; Stuck at VCC ;
 ; greent[31..3]  ; Input ; Info     ; Stuck at GND ;
-; yellowt[1..0]  ; Input ; Info     ; Stuck at VCC ;
+; greent[1..0]   ; Input ; Info     ; Stuck at GND ;
+; greent[2]      ; Input ; Info     ; Stuck at VCC ;
 ; yellowt[31..2] ; Input ; Info     ; Stuck at GND ;
+; yellowt[1]     ; Input ; Info     ; Stuck at VCC ;
+; yellowt[0]     ; Input ; Info     ; Stuck at GND ;
+; redt[2..1]     ; Input ; Info     ; Stuck at VCC ;
 ; redt[31..3]    ; Input ; Info     ; Stuck at GND ;
-; redt[2]        ; Input ; Info     ; Stuck at VCC ;
-; redt[1]        ; Input ; Info     ; Stuck at GND ;
-; redt[0]        ; Input ; Info     ; Stuck at VCC ;
+; redt[0]        ; Input ; Info     ; Stuck at GND ;
++----------------+-------+----------+--------------+
+
+
++--------------------------------------------------+
+; Port Connectivity Checks: "FSM_CWC:FSM_CWC1"     ;
++----------------+-------+----------+--------------+
+; Port           ; Type  ; Severity ; Details      ;
++----------------+-------+----------+--------------+
+; statei.GREENS  ; Input ; Info     ; Stuck at VCC ;
+; statei.YELLOWS ; Input ; Info     ; Stuck at GND ;
+; statei.REDS    ; Input ; Info     ; Stuck at GND ;
+; greent[31..3]  ; Input ; Info     ; Stuck at GND ;
+; greent[1..0]   ; Input ; Info     ; Stuck at GND ;
+; greent[2]      ; Input ; Info     ; Stuck at VCC ;
+; yellowt[31..2] ; Input ; Info     ; Stuck at GND ;
+; yellowt[1]     ; Input ; Info     ; Stuck at VCC ;
+; yellowt[0]     ; Input ; Info     ; Stuck at GND ;
+; redt[2..1]     ; Input ; Info     ; Stuck at VCC ;
+; redt[31..3]    ; Input ; Info     ; Stuck at GND ;
+; redt[0]        ; Input ; Info     ; Stuck at GND ;
 +----------------+-------+----------+--------------+
 
 
@@ -309,9 +335,8 @@ Encoding Type:  One-Hot
 ; Port       ; Type  ; Severity ; Details                  ;
 +------------+-------+----------+--------------------------+
 ; enable     ; Input ; Info     ; Stuck at VCC             ;
+; max[1..0]  ; Input ; Info     ; Stuck at VCC             ;
 ; max[31..2] ; Input ; Info     ; Stuck at GND             ;
-; max[1]     ; Input ; Info     ; Stuck at VCC             ;
-; max[0]     ; Input ; Info     ; Stuck at GND             ;
 +------------+-------+----------+--------------------------+
 
 
@@ -320,22 +345,24 @@ Encoding Type:  One-Hot
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 75                          ;
-;     CLR               ; 2                           ;
-;     ENA CLR           ; 6                           ;
-;     SCLR              ; 64                          ;
-;     plain             ; 3                           ;
-; arriav_lcell_comb     ; 96                          ;
-;     arith             ; 64                          ;
-;         1 data inputs ; 63                          ;
-;         2 data inputs ; 1                           ;
-;     normal            ; 32                          ;
-;         1 data inputs ; 6                           ;
-;         2 data inputs ; 2                           ;
-;         4 data inputs ; 1                           ;
-;         5 data inputs ; 10                          ;
-;         6 data inputs ; 13                          ;
-; boundary_port         ; 77                          ;
+; arriav_ff             ; 117                         ;
+;     CLR               ; 4                           ;
+;     ENA               ; 2                           ;
+;     ENA CLR           ; 12                          ;
+;     ENA SCLR          ; 60                          ;
+;     SCLR              ; 32                          ;
+;     plain             ; 7                           ;
+; arriav_lcell_comb     ; 156                         ;
+;     arith             ; 96                          ;
+;         1 data inputs ; 96                          ;
+;     normal            ; 60                          ;
+;         1 data inputs ; 12                          ;
+;         2 data inputs ; 6                           ;
+;         3 data inputs ; 2                           ;
+;         4 data inputs ; 2                           ;
+;         5 data inputs ; 16                          ;
+;         6 data inputs ; 22                          ;
+; boundary_port         ; 120                         ;
 ;                       ;                             ;
 ; Max LUT depth         ; 4.10                        ;
 ; Average LUT depth     ; 2.91                        ;
@@ -357,7 +384,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.1 Build 720 11/11/2020 SJ Lite Edition
-    Info: Processing started: Mon Aug 09 22:23:00 2021
+    Info: Processing started: Thu Aug 12 19:09:11 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Crosswalk_Controller -c Crosswalk_Controller
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -368,32 +395,48 @@ Info (12021): Found 2 design units, including 1 entities, in source file counter
     Info (12022): Found design unit 1: Counter16Bits-Behavioral File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Counter16Bits.vhd Line: 34
     Info (12023): Found entity 1: Counter16Bits File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Counter16Bits.vhd Line: 22
 Info (12021): Found 2 design units, including 1 entities, in source file crosswalk_controller.vhd
-    Info (12022): Found design unit 1: Crosswalk_Controller-Behavioral File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Crosswalk_Controller.vhd Line: 40
-    Info (12023): Found entity 1: Crosswalk_Controller File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Crosswalk_Controller.vhd Line: 19
+    Info (12022): Found design unit 1: Crosswalk_Controller-Behavioral File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Crosswalk_Controller.vhd Line: 51
+    Info (12023): Found entity 1: Crosswalk_Controller File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Crosswalk_Controller.vhd Line: 21
 Info (12021): Found 2 design units, including 1 entities, in source file counter32bits.vhd
     Info (12022): Found design unit 1: Counter32Bits-Behavioral File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Counter32Bits.vhd Line: 36
     Info (12023): Found entity 1: Counter32Bits File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Counter32Bits.vhd Line: 20
 Info (12021): Found 2 design units, including 1 entities, in source file fsm_cwc.vhd
-    Info (12022): Found design unit 1: FSM_CWC-Behavioral File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/FSM_CWC.vhd Line: 46
-    Info (12023): Found entity 1: FSM_CWC File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/FSM_CWC.vhd Line: 20
+    Info (12022): Found design unit 1: FSM_CWC-Behavioral File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/FSM_CWC.vhd Line: 49
+    Info (12023): Found entity 1: FSM_CWC File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/FSM_CWC.vhd Line: 21
+Info (12021): Found 2 design units, including 1 entities, in source file counter32bitsreverse.vhd
+    Info (12022): Found design unit 1: Counter32BitsReverse-Behavioral File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Counter32BitsReverse.vhd Line: 36
+    Info (12023): Found entity 1: Counter32BitsReverse File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Counter32BitsReverse.vhd Line: 20
+Info (12021): Found 1 design units, including 0 entities, in source file state_package.vhd
+    Info (12022): Found design unit 1: State_Package File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/State_Package.vhd Line: 4
 Info (12127): Elaborating entity "Crosswalk_Controller" for the top level hierarchy
-Info (12128): Elaborating entity "SevenSegments" for hierarchy "SevenSegments:SevenSegments0" File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Crosswalk_Controller.vhd Line: 109
-Info (12128): Elaborating entity "Counter32Bits" for hierarchy "Counter32Bits:Counter32Bits0" File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Crosswalk_Controller.vhd Line: 113
-Info (12128): Elaborating entity "FSM_CWC" for hierarchy "FSM_CWC:FSM_CWC0" File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Crosswalk_Controller.vhd Line: 121
-Warning (10492): VHDL Process Statement warning at FSM_CWC.vhd(81): signal "greenT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/FSM_CWC.vhd Line: 81
-Info (13000): Registers with preset signals will power-up high File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/FSM_CWC.vhd Line: 73
+Info (12128): Elaborating entity "SevenSegments" for hierarchy "SevenSegments:SevenSegments0" File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Crosswalk_Controller.vhd Line: 139
+Info (12128): Elaborating entity "Counter32Bits" for hierarchy "Counter32Bits:Counter32Bits0" File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Crosswalk_Controller.vhd Line: 147
+Info (12128): Elaborating entity "Counter32BitsReverse" for hierarchy "Counter32BitsReverse:Counter32Bits1" File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Crosswalk_Controller.vhd Line: 152
+Info (12128): Elaborating entity "FSM_CWC" for hierarchy "FSM_CWC:FSM_CWC1" File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/Crosswalk_Controller.vhd Line: 156
+Warning (10492): VHDL Process Statement warning at FSM_CWC.vhd(78): signal "stateI" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/FSM_CWC.vhd Line: 78
+Warning (10492): VHDL Process Statement warning at FSM_CWC.vhd(79): signal "stateI" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/FSM_CWC.vhd Line: 79
+Warning (10492): VHDL Process Statement warning at FSM_CWC.vhd(83): signal "greenT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/FSM_CWC.vhd Line: 83
+Warning (10492): VHDL Process Statement warning at FSM_CWC.vhd(85): signal "stateI" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/FSM_CWC.vhd Line: 85
+Warning (10492): VHDL Process Statement warning at FSM_CWC.vhd(89): signal "redT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/FSM_CWC.vhd Line: 89
+Warning (10492): VHDL Process Statement warning at FSM_CWC.vhd(91): signal "stateI" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/FSM_CWC.vhd Line: 91
+Warning (10492): VHDL Process Statement warning at FSM_CWC.vhd(95): signal "yellowT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/FSM_CWC.vhd Line: 95
+Info (10018): Can't recognize finite state machine "State" because it has a complex reset state
+Info (13000): Registers with preset signals will power-up high File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/FSM_CWC.vhd Line: 76
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Info (286030): Timing-Driven Synthesis is running
+Critical Warning (18061): Ignored Power-Up Level option on the following registers
+    Critical Warning (18010): Register FSM_CWC:FSM_CWC2|State.REDS will power up to High File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/FSM_CWC.vhd Line: 55
+    Critical Warning (18010): Register FSM_CWC:FSM_CWC2|State.GREENS will power up to Low File: C:/Users/yodav/Documents/Conestoga_College/FIRST_TERM/Digital_Design/LABS/Lab10/VHDL/FSM_CWC.vhd Line: 55
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 175 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 3 input pins
-    Info (21059): Implemented 74 output pins
-    Info (21061): Implemented 98 logic cells
-Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 4843 megabytes
-    Info: Processing ended: Mon Aug 09 22:23:09 2021
-    Info: Elapsed time: 00:00:09
+Info (21057): Implemented 281 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 4 input pins
+    Info (21059): Implemented 116 output pins
+    Info (21061): Implemented 161 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
+    Info: Peak virtual memory: 4844 megabytes
+    Info: Processing ended: Thu Aug 12 19:09:21 2021
+    Info: Elapsed time: 00:00:10
     Info: Total CPU time (on all processors): 00:00:21
 
 

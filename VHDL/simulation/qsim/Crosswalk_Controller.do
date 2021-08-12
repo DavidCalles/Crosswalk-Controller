@@ -1,7 +1,7 @@
 onerror {exit -code 1}
 vlib work
 vcom -work work Crosswalk_Controller.vho
-vcom -work work Waveform2.vwf.vht
+vcom -work work Waveform3.vwf.vht
 vsim -c -t 1ps -L cyclonev -L altera -L altera_mf -L 220model -L sgate -L altera_lnsim work.Crosswalk_Controller_vhd_vec_tst
 vcd file -direction Crosswalk_Controller.msim.vcd
 vcd add -internal Crosswalk_Controller_vhd_vec_tst/*
@@ -15,5 +15,3 @@ proc simTimestamp {} {
 after 2500 simTimestamp
 run -all
 quit -f
-
-
