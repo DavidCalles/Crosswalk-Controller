@@ -1,12 +1,16 @@
--- Counter32Bits.vhd
+-- Counter32BitsReverse.vhd
 
 --***********************************************************************
---	Description: 
+--	Description: 32-bits reverse counter (starts in max, ends in 0)
 --	
---	Inputs: 		
+--	Inputs: 		clk, clock signal;
+--					reset, reset signal, active low;
+--					enable, enable signal, active high;
+--					max, reset value of the counter;
 --			
---					
 --	Outputs:
+--					overflow, single cycle flag when counter reaches 0;
+--					count, current counter value;
 --			 	
 --***********************************************************************
 

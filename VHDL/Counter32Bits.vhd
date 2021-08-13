@@ -1,12 +1,16 @@
 -- Counter32Bits.vhd
 
 --***********************************************************************
---	Description: 
+--	Description: 32-bits forward counter
 --	
---	Inputs: 		
+--	Inputs: 		clk, clock signal;
+--					reset, reset signal, active low;
+--					enable, enable signal, active high;
+--					max, reset value of the counter;
 --			
---					
 --	Outputs:
+--					overflow, single cycle flag when counter reaches max;
+--					count, current counter value;
 --			 	
 --***********************************************************************
 

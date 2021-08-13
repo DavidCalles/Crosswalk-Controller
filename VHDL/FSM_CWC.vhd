@@ -1,12 +1,31 @@
 -- FSM_CWC.vhd
 
 --***********************************************************************
---	Description: 
+--	Description: Finite state machine of a simple traffic light and 
+--					crosswalk controller.
 --	
 --	Inputs: 		
+--				clk, clock signal;
+--				reset, reset signal (active low);
+--				button, input from pedestrian (active low);
+--				overflow, overflow from a seconds counter;
+--				
+--				stateI, initial state variable (RED, YELLOW, GREEN);
+--				
+--				greenT, time of green light in seconds;
+--				yellowT,	time of yellow light in seconds;
+--				redT,	time of red light in seconds;
 --			
 --					
 --	Outputs:
+--				redLight, red light;
+--				yellowLight, yellow light;
+--				greenLight, green light;
+--				
+--				enable7Segments, enable for the 7-segments display;
+--				
+--				timerVal, value that the timer has to count;
+--				timerReset, reset signal of the extern counter
 --			 	
 --***********************************************************************
 
@@ -14,7 +33,9 @@ LIBRARY IEEE;
 USE IEEE.std_logic_1164.ALL;
 USE IEEE.NUMERIC_STD.ALL;
 USE IEEE.STD_LOGIC_UNSIGNED.ALL;
-use work.State_Package.all; -- USING PACKAGE HERE!
+
+-- Own package with state variable definition
+use work.State_Package.all;
 
 -- Entity declaration
 
@@ -106,7 +127,7 @@ BEGIN
 			
 			CASE State IS
 		 
-				WHEN GREENS => 
+				WHEN GREENS => -- GREEN STATE
 					IF (overflow /= '1') THEN
 						timerResetSignal <= '1'; -- Let timer count
 						State <= GREENS;
@@ -119,7 +140,7 @@ BEGIN
 						State <= YELLOWS;
 					END IF;
 		 
-				WHEN YELLOWS => 
+				WHEN YELLOWS => -- YELLOW STATE
 					IF (overflow /= '1') THEN
 						timerResetSignal <= '1'; -- Let timer count
 						State <= YELLOWS;
@@ -144,7 +165,7 @@ BEGIN
 					
 					END IF; 
 
-				WHEN REDS => 
+				WHEN REDS => -- RED STATE
 					 IF (overflow /= '1') THEN
 						timerResetSignal <= '1'; -- Let timer count
 						State <= REDS;
@@ -159,7 +180,7 @@ BEGIN
 						State <= GREENS;
 					END IF;
 
-				WHEN others =>
+				WHEN others => -- In case of error return to initial state
 					State <= stateI;
 					IF (stateI = GREENS) THEN
 						greenSignal <= '1';
